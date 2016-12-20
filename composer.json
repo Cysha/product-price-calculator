@@ -1,0 +1,23 @@
+{
+  "name": "noeldavies/price-parser",
+  "require": {
+    "phpspec/phpspec": "^3.2",
+    "moneyphp/money": "^3.0",
+    "beberlei/assert": "^2.6",
+    "tightenco/collect": "^5.3"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Daniel Noel-Davies",
+      "email": "Daniel@NoelDavi.es"
+    }
+  ]
+}
