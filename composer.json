@@ -1,5 +1,5 @@
 {
-  "name": "noeldavies/price-parser",
+  "name": "cysha/product-price-calculator",
   "require": {
     "moneyphp/money": "^3.0",
     "beberlei/assert": "^2.6",
