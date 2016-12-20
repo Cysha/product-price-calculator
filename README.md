@@ -1,4 +1,4 @@
-# Money Parser
+# Product Price Calculator
 PHP 5.6+ library to make working with products and price calculation, easier, and fun!
 
 
