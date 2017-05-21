@@ -3,7 +3,7 @@
   "type": "library",
   "description": "A simple package to assist with calculating product prices",
   "license": "MIT",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "authors": [{
       "name": "Daniel Noel-Davies",
       "email": "Daniel@NoelDavi.es",
@@ -15,7 +15,7 @@
     "tightenco/collect": "^5.3"
   },
   "require-dev": {
-    "phpspec/phpspec": "^3.2"
+    "phpspec/phpspec": "~3"
   },
   "config": {
     "bin-dir": "bin"
