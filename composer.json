@@ -1,5 +1,13 @@
 {
   "name": "cysha/product-price-calculator",
+  "type": "library",
+  "description": "A simple package to assist with calculating product prices",
+  "license": "MIT",
+  "authors": [{
+      "name": "Daniel Noel-Davies",
+      "email": "Daniel@NoelDavi.es",
+      "homepage": "http://noeldavi.es"
+  }],
   "require": {
     "moneyphp/money": "^3.0",
     "beberlei/assert": "^2.6",
@@ -13,13 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "": "src/"
+      "Cysha\\ProductPriceCalculator\\": "src/"
     }
-  },
-  "authors": [
-    {
-      "name": "Daniel Noel-Davies",
-      "email": "Daniel@NoelDavi.es"
-    }
-  ]
+  }
 }

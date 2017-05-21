@@ -1,13 +1,11 @@
 <?php
 
-namespace spec\Product;
+namespace spec\Cysha\ProductPriceCalculator\Product;
 
-use Model\Factory\MoneyFactory;
-use Model\Percentage;
-use Money\Money;
+use Cysha\ProductPriceCalculator\Model\Factory\MoneyFactory;
+use Cysha\ProductPriceCalculator\Model\Percentage;
 use PhpSpec\ObjectBehavior;
-use Product\Product;
-use Product\ProductPriceCalculator;
+use Cysha\ProductPriceCalculator\Product\Product;
 
 class ProductSpec extends ObjectBehavior
 {

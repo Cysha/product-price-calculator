@@ -6,7 +6,7 @@
  * Time: 00:38
  */
 
-namespace Model;
+namespace Cysha\ProductPriceCalculator\Model;
 
 
 interface Saleable extends Taxable

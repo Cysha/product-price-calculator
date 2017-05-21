@@ -1,8 +1,8 @@
 <?php
 
-namespace Tax;
+namespace Cysha\ProductPriceCalculator\Tax;
 
-use Model\Percentage;
+use Cysha\ProductPriceCalculator\Model\Percentage;
 
 /** @noinspection MissingClassSpec */
 class TaxRate extends Percentage

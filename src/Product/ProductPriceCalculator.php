@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dan
- * Date: 20/12/16
- * Time: 20:32
- */
 
-namespace Product;
+namespace Cysha\ProductPriceCalculator\Product;
 
-use Model\Factory\MoneyFactory;
-use Model\Percentage;
-use Model\Taxable;
+use Cysha\ProductPriceCalculator\Model\Factory\MoneyFactory;
+use Cysha\ProductPriceCalculator\Model\Percentage;
+use Cysha\ProductPriceCalculator\Model\Taxable;
 use Money\Money;
-use Tax\TaxCollection;
-use Tax\TaxRate;
+use Cysha\ProductPriceCalculator\Tax\TaxCollection;
+use Cysha\ProductPriceCalculator\Tax\TaxRate;
 
 class ProductPriceCalculator
 {

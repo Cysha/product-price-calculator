@@ -1,16 +1,15 @@
 <?php
 
-namespace spec\Product;
+namespace spec\Cysha\ProductPriceCalculator\Product;
 
-use Model\Factory\MoneyFactory;
-use Model\Percentage;
-use Model\Saleable;
-use Model\Taxable;
+use Cysha\ProductPriceCalculator\Tax\TaxCollection;
+use Cysha\ProductPriceCalculator\Model\Factory\MoneyFactory;
+use Cysha\ProductPriceCalculator\Model\Percentage;
+use Cysha\ProductPriceCalculator\Model\Saleable;
+use Cysha\ProductPriceCalculator\Model\Taxable;
+use Cysha\ProductPriceCalculator\Tax\TaxRate;
 use Money\Money;
-use Product\Product;
 use PhpSpec\ObjectBehavior;
-use Tax\TaxCollection;
-use Tax\TaxRate;
 
 /**
  * Class ProductPriceCalculatorSpec

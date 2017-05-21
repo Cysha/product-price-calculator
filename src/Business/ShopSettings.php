@@ -6,7 +6,7 @@
  * Time: 20:34
  */
 
-namespace Business;
+namespace Cysha\ProductPriceCalculator\Business;
 
 class ShopSettings
 {

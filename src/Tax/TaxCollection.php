@@ -1,6 +1,6 @@
 <?php
 
-namespace Tax;
+namespace Cysha\ProductPriceCalculator\Tax;
 
 use Illuminate\Support\Collection;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace Cysha\ProductPriceCalculator\Model;
 
 use Assert\AssertionFailedException;
 

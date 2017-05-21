@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\Factory;
+namespace Cysha\ProductPriceCalculator\Model\Factory;
 
 use InvalidArgumentException;
 use Money\Currency;

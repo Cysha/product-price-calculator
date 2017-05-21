@@ -1,11 +1,10 @@
 <?php
-namespace Product;
+namespace Cysha\ProductPriceCalculator\Product;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
-use Model\Percentage;
-use Model\Saleable;
-use Model\Taxable;
+use Cysha\ProductPriceCalculator\Model\Percentage;
+use Cysha\ProductPriceCalculator\Model\Saleable;
 use Money\Money;
 
 class Product implements Saleable
