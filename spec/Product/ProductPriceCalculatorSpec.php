@@ -4,6 +4,9 @@ namespace spec\Product;
 
 use Model\Factory\MoneyFactory;
 use Model\Percentage;
+use Model\Saleable;
+use Model\Taxable;
+use Money\Money;
 use Product\Product;
 use PhpSpec\ObjectBehavior;
 use Tax\TaxCollection;
@@ -26,44 +29,48 @@ class ProductPriceCalculatorSpec extends ObjectBehavior
     }
 
     /**
-     * @param Product       $product
+     * @param Saleable $product
      * @param TaxCollection $taxes
      */
-    public function it_calculates_profit_margin_on_a_base_cost(Product $product, $taxes)
+    public function it_calculates_profit_margin_on_a_base_cost(Saleable $product, $taxes)
     {
-        $costPrice    = MoneyFactory::create(90, 'GBP');
-        $profitMargin = Percentage::fromDecimal(0.1);
-        $profit       = $profitMargin->add(Percentage::oneHundredPercent());
-        $expectedCost = $costPrice->add($costPrice->multiply($profit->value()));
+        $costPrice = MoneyFactory::create(90, 'GBP'); // £90
+        $profitMargin = Percentage::fromDecimal(0.1); // 10%
+        $expectedSalePriceBeforeTax = MoneyFactory::create(99, 'GBP'); // £99
+//        $finalSalePriceInclusiveOfTax = MoneyFactory::create()
 
-        $product->cost()->willReturn($costPrice);
-        $product->name()->willReturn('Nintendo 3DS');
-        $product->profitMargin()->willReturn($profitMargin);
-
-        $this->beConstructedWith($taxes, $profit);
-        $this->calculatePriceFromProduct($product)->shouldBeLike($expectedCost);
-    }
-
-    public function it_handles_a_custom_tax_rate(Product $product)
-    {
-        $lithuanianVATRate = TaxRate::fromDecimal(0.21);
-        $taxes             = TaxCollection::make()->push($lithuanianVATRate);
-        $costPrice         = MoneyFactory::create(90, 'GBP');
-        $profitMargin      = Percentage::fromDecimal(0.1);
-
-        $profit          = $profitMargin->add(Percentage::oneHundredPercent());
-        $priceWithoutVat = $costPrice->add($costPrice->multiply($profit->value()));
-        $price           = $priceWithoutVat;
-
-        $taxes->each(function (TaxRate $taxRate) use (&$price) {
-            $price = $price->add($price->multiply($taxRate->multiply(Percentage::oneHundredPercent())->value()));
-        });
-
-        $product->cost()->willReturn($costPrice);
-        $product->name()->willReturn('Nintendo 3DS');
-        $product->profitMargin()->willReturn($profitMargin);
+        $this->createProduct($product, $costPrice, $profitMargin);
 
         $this->beConstructedWith($taxes);
-        $this->calculatepriceFromProduct($product)->shouldBeLike($price);
+        $actualSalesPriceInclusiveOfTax = $this->calculatePriceFromProduct($product);
+        $actualSalesPriceInclusiveOfTax->shouldBeLike($expectedSalePriceBeforeTax);
+    }
+
+    public function it_handles_a_custom_tax_rate(Saleable $product)
+    {
+        $lithuanianVATRate = TaxRate::fromDecimal(0.21); // 21%
+        $taxes = TaxCollection::make()->push($lithuanianVATRate); // [21%]
+        $costPrice = MoneyFactory::create(90, 'GBP'); // £90
+        $profitMargin = Percentage::fromDecimal(0.1); // 10%
+
+        $this->createProduct($product, $costPrice, $profitMargin);
+
+        $expectedSalesPrice = MoneyFactory::create(119.79, 'GBP'); // 90 + 9 (profit) = 99 + taxes (21%) = 119.79
+
+        $this->beConstructedWith($taxes);
+        $calculatedPrice = $this->calculatePriceFromProduct($product);
+        $calculatedPrice->shouldBeLike($expectedSalesPrice);
+    }
+
+    /**
+     * @param Saleable $product
+     * @param $costPrice
+     * @param $profitMargin
+     */
+    private function createProduct(Saleable $product, Money $costPrice, Percentage $profitMargin)
+    {
+        $product->cost()->willReturn($costPrice);
+        $product->name()->willReturn('Nintendo 3DS');
+        $product->profitMargin()->willReturn($profitMargin);
     }
 }

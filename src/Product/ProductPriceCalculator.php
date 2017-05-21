@@ -10,6 +10,7 @@ namespace Product;
 
 use Model\Factory\MoneyFactory;
 use Model\Percentage;
+use Model\Taxable;
 use Money\Money;
 use Tax\TaxCollection;
 use Tax\TaxRate;
@@ -36,7 +37,7 @@ class ProductPriceCalculator
      *
      * @return Money
      */
-    public function calculatePriceFromProduct(Product $product)
+    public function calculatePriceFromProduct(Taxable $product)
     {
         $profitPercentage = $product->profitMargin()->add(Percentage::oneHundredPercent());
         $priceWithoutVat  = $product->cost()->multiply($profitPercentage->value());

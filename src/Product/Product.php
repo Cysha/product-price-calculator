@@ -4,9 +4,11 @@ namespace Product;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 use Model\Percentage;
+use Model\Saleable;
+use Model\Taxable;
 use Money\Money;
 
-class Product
+class Product implements Saleable
 {
     /**
      * @var string
@@ -79,7 +81,7 @@ class Product
     /**
      * @return Money
      */
-    public function cost()
+    public function cost(): Money
     {
         return $this->cost;
     }
@@ -87,7 +89,7 @@ class Product
     /**
      * @return Percentage
      */
-    public function profitMargin()
+    public function profitMargin(): Percentage
     {
         return $this->profitMargin;
     }
